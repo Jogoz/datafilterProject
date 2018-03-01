@@ -1,18 +1,23 @@
 import glob
 import os
 import time
-
+import configparser
 
 time.strftime("%Y%m%d", time.gmtime(time.time()-3600))
-if not os.path.exists(time.strftime("C:\\Users\\JOGO8\\OneDrive\\Office\\datafilterProject\\outputdata\\%Y%m%d\\CAT20")):
-    os.makedirs(time.strftime("C:\\Users\\JOGO8\\OneDrive\\Office\\datafilterProject\\outputdata\\%Y%m%d\\CAT20"))
 
-if not os.path.exists(time.strftime("C:\\Users\\JOGO8\\OneDrive\\Office\\datafilterProject\\output\\%Y%m%d\\CAT21")):
-    os.makedirs(time.strftime("C:\\Users\\JOGO8\\OneDrive\\Office\\datafilterProject\\outputdata\\%Y%m%d\\CAT21"))
+pathDirectory = configparser.ConfigParser()
+pathDirectory.read_file(open(r'path_config.txt'))
+inputPath = pathDirectory.get('PATH', 'INPUT')
+outputPath = pathDirectory.get('PATH', 'OUTPUT')
 
-inputPath = "C:\\Users\\JOGO8\\OneDrive\\Office\\datafilterProject\\rawdata"
+
+if not os.path.exists(time.strftime(outputPath + "\\outputdata\\%Y%m%d\\CAT20")):
+    os.makedirs(time.strftime(outputPath + "\\outputdata\\%Y%m%d\\CAT20"))
+
+if not os.path.exists(time.strftime(outputPath +"\\outputdata\\%Y%m%d\\CAT21")):
+    os.makedirs(time.strftime(outputPath + "\\outputdata\\%Y%m%d\\CAT21"))
+
 os.chdir(inputPath)
-
 patternName = "data.csv.*"
 lines_seen = set()
 
@@ -66,7 +71,7 @@ for fileName in glob.glob(patternName):
                     lines_seen.add(x)
                     Aircraft_ID = x
                 if Aircraft_ID in field_cat20('12'):
-                    filename_a = time.strftime("C:\\Users\\JOGO8\\OneDrive\\Office\\datafilterProject\\outputdata\\%Y%m%d\\CAT20\\" + str(field_cat20('12').upper()))
+                    filename_a = time.strftime(outputPath + "\\outputdata\\%Y%m%d\\CAT20\\" + str(field_cat20('12').upper()))
                     a = open(filename_a, "a")
                     a.write(date + '\t' + field_cat20('3') +'\t'+ field_cat20('4') +'\t'+ field_cat20('12') +'\t'+ field_cat20('13')+'\t'+ field_cat20('14') +'\t'+ field_cat20('15') +'\t'+ field_cat20('19') +'\t'+ field_cat20('21')+'\n')
                     a.close()
@@ -80,7 +85,7 @@ for fileName in glob.glob(patternName):
                     lines_seen.add(x)
                     Aircraft_ID = x
                 if Aircraft_ID in field_cat21('5'):
-                    filename_b = time.strftime("C:\\Users\\JOGO8\\OneDrive\\Office\\datafilterProject\\outputdata\\%Y%m%d\\CAT21\\" + str(field_cat21('5').upper()))
+                    filename_b = time.strftime(outputPath + "\\outputdata\\%Y%m%d\\CAT21\\" + str(field_cat21('5').upper()))
                     b = open(filename_b, "a")
                     b.write(date +'\t'+ cat +'\t'+ field_cat21('3') +'\t'+ field_cat21('4') +'\t'+ field_cat21('5') +'\t'+ field_cat21('18')+'\n')
                     b.close()
