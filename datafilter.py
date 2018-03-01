@@ -36,7 +36,7 @@ def field_cat20(field):
             field_raw2 = field_raw.split('|')[0]
             field_real = field_raw2[4:]
         else:
-            field_real = "\t"
+            field_real = "unknown"
         return field_real
 
 def field_cat21(field):
@@ -45,7 +45,7 @@ def field_cat21(field):
         field_raw = cat21.split(x + ":")[1]
         field_real = field_raw.split('|')[0]
     else:
-        field_real = "\t"
+        field_real = "unknown"
     return field_real
 
 def eliminate_dup():
