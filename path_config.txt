@@ -1,3 +1,4 @@
 [PATH]
 INPUT = C:\Users\JOGO8\OneDrive\Office\datafilterProject\rawdata
 OUTPUT = C:\Users\JOGO8\OneDrive\Office\datafilterProject
+ARCHIVE = C:\Users\JOGO8\OneDrive\Office\datafilterProject\archive
