@@ -10,9 +10,6 @@ pathDirectory.read_file(open(r'path_config.txt'))
 inputPath = pathDirectory.get('PATH', 'INPUT')
 outputPath = pathDirectory.get('PATH', 'OUTPUT')
 archivePath = pathDirectory.get('PATH', 'ARCHIVE')
-os.chdir(inputPath)
-patternName = "data.csv.*"
-lines_seen = set()
 
 def createPathDirectory():
     if not os.path.exists(inputPath):
@@ -24,6 +21,10 @@ def createPathDirectory():
     if not os.path.exists(time.strftime(outputPath +"\\outputdata\\%Y%m%d\\CAT21")):
         os.makedirs(time.strftime(outputPath + "\\outputdata\\%Y%m%d\\CAT21"))
 createPathDirectory()
+
+os.chdir(inputPath)
+patternName = "data.csv.*"
+lines_seen = set()
 
 def field_cat20(field):
     if field != '13':
