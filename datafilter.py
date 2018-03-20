@@ -24,7 +24,7 @@ createPathDirectory()
 
 os.chdir(inputPath)
 patternName = "data.csv.*"
-lines_seen = set()
+lines_seen = set() ## holds lines already seen
 
 def field_cat20(field): ## function to get the specific field fron the cat20 lines.
     if field != '13':
