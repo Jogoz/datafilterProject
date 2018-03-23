@@ -76,15 +76,15 @@ for fileName in glob.glob(patternName):
             x = field_cat20('12') ## keep all the field12(Aircraft_ID) to variable x.
             if x not in lines_seen: ## remove the duplicated lines that the program had seen, it will remain one of each field12(Aircraft_ID).
                 lines_seen.add(x)
-                Aircraft_ID.append(x) ## append value x to array Aircraft_ID_cat20
+                Aircraft_ID.append(x) ## append value x to array Aircraft_ID
         if match2 in line: ## extract the lines with matching CAT type.
             cat21 = line
 ##                data = cat21.split('|')[0] 
 ##                cat = cat21.split('|')[1]
-            x = field_cat21('5') ## keep all the field12(Aircraft_ID) to variable x.
-            if x not in lines_seen: ## remove the duplicated lines that the program had seen, it will remain one of each field12(Aircraft_ID).
+            x = field_cat21('5') ## keep all the field5(Aircraft_ID) to variable x.
+            if x not in lines_seen: ## remove the duplicated lines that the program had seen, it will remain one of each field5(Aircraft_ID).
                 lines_seen.add(x)
-                Aircraft_ID.append(x) ## append value x to array Aircraft_ID_cat20
+                Aircraft_ID.append(x) ## append value x to array Aircraft_ID
                 
 ##print (Aircraft_ID_cat20)
 print (Aircraft_ID)
@@ -103,7 +103,7 @@ for fileName in glob.glob(patternName):
                 date = cat20.split('|')[0]
                 cat = cat20.split('|')[1]
                 x = field_cat20('12') ## keep all the field12(Aircraft_ID) to variable x.
-                for ID in Aircraft_ID: ## using the value in array Aircraft_ID_cat20
+                for ID in Aircraft_ID: ## using the value in array Aircraft_ID
                     if ID in cut_date: ## compare to each line
 ##                        print (field_cat20('12'))
 ##                        print (date + '\t' + cat + '\t' + field_cat20('3') +'\t'+ field_cat20('4') +'\t'+ field_cat20('12') +'\t'+ field_cat20('13')+'\t'+ field_cat20('14') +'\t'+ field_cat20('15') +'\t'+ field_cat20('19') +'\t'+ field_cat20('21')+'\n')
@@ -117,7 +117,7 @@ for fileName in glob.glob(patternName):
                 date = cat21.split('|')[0]
                 cat = cat21.split('|')[1]
                 x = field_cat21('5') ## keep all the field5(Aircraft_ID) to variable x.
-                for ID in Aircraft_ID: ## using the value in array Aircraft_ID_cat21
+                for ID in Aircraft_ID: ## using the value in array Aircraft_ID
                     if ID in cut_date: ## compare to each line
 ##                        print (date +'\t'+ cat +'\t'+ field_cat21('3') +'\t'+ field_cat21('4') +'\t'+ field_cat21('5') +'\t'+ field_cat21('18')+'\n')
                         filename_b = time.strftime(outputPath + "\\outputdata\\%Y%m%d\\CAT21\\" + str(field_cat21('5')).upper()) ## creating output files categorized by (Aircraft_ID).
