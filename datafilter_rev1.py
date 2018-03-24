@@ -26,6 +26,7 @@ createPathDirectory()
 os.chdir(inputPath)
 patternName = "data.csv.*"
 lines_seen = set() ## holds lines already seen
+lines_seen2 = set()
 
 def field_cat20(field): ## function to get the specific field fron the cat20 lines.
     if field != '13':
@@ -81,7 +82,7 @@ for fileName in glob.glob(patternName):
             cat21 = line
 ##                data = cat21.split('|')[0] 
 ##                cat = cat21.split('|')[1]
-            x = field_cat21('5') ## keep all the field5(Aircraft_ID) to variable x.
+            x = field_cat21('5') ## keep all the field12(Aircraft_ID) to variable x.
             if x not in lines_seen: ## remove the duplicated lines that the program had seen, it will remain one of each field5(Aircraft_ID).
                 lines_seen.add(x)
                 Aircraft_ID.append(x) ## append value x to array Aircraft_ID
@@ -94,8 +95,8 @@ for fileName in glob.glob(patternName):
     inputData = open(inputFile, "r")
     for line in inputData:
         cut_date = line[13:] ## cut date in the first column and keep in variable .
-        if cut_date not in lines_seen: ## remove the duplicated lines.
-            lines_seen.add(cut_date)
+        if cut_date not in lines_seen2: ## remove the duplicated lines.
+            lines_seen2.add(cut_date)
             match1 = 'CAT20'
             match2 = 'CAT21'
             if match1 in cut_date: ## extract the lines with matching CAT type.
